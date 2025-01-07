@@ -21,6 +21,12 @@ namespace projet_calculatrice
         char op;
         double memoire = 0;
 
+        /// <summary>
+        /// Écrit une valeur dans le champ texte.
+        /// Si l'écran affiche "0", il remplace par la valeur saisie.
+        /// Sinon, il ajoute la valeur à la suite.
+        /// </summary>
+        /// <param name="valeur">Valeur à écrire dans l'écran</param>
         private void ecrire (string valeur){
             if (txtEcran.Text == "0")
             {
@@ -31,6 +37,11 @@ namespace projet_calculatrice
                 txtEcran.Text = txtEcran.Text + valeur;
             }
         }
+        /// <summary>
+        /// Effectue une opération en stockant la valeur actuelle et l'opérateur.
+        /// Réinitialise l'écran à "0" pour entrer la nouvelle valeur.
+        /// </summary>
+        /// <param name="p">Opérateur (ex : '+', '-', '*', '÷')</param>
         public void operation(char p)
         {
             memo = double.Parse(txtEcran.Text);
@@ -69,7 +80,9 @@ namespace projet_calculatrice
         {
 
         }
-
+        /// <summary>
+        /// Stocke la valeur affichée dans la mémoire (MS).
+        /// </summary>
         private void btn_mr_Click(object sender, EventArgs e)
         {
             txtEcran.Text = memoire.ToString();
@@ -86,13 +99,17 @@ namespace projet_calculatrice
             memo = Math.Sqrt(double.Parse(txtEcran.Text));
             txtEcran.Text = memo.ToString();
         }
-
+        /// <summary>
+        /// Élévation au carré de la valeur affichée.
+        /// </summary>
         private void btnx2_Click(object sender, EventArgs e)
         {
             memo = Math.Pow((double.Parse(txtEcran.Text)), 2);
             txtEcran.Text = memo.ToString();
         }
-
+        /// <summary>
+        /// Calcule l'inverse (1/x) de la valeur affichée.
+        /// </summary>
         private void btn1surX_Click(object sender, EventArgs e)
         {
             memo = 1 / (double.Parse(txtEcran.Text));
@@ -110,6 +127,11 @@ namespace projet_calculatrice
             memo = 0;
             op = '\0';
         }
+
+        /// <summary>
+        /// Efface le dernier caractère de l'écran.
+        /// Si l'écran est vide, affiche "0".
+        /// </summary>
 
         private void btn_effacer_Click_1(object sender, EventArgs e)
         {
@@ -167,7 +189,10 @@ namespace projet_calculatrice
         {
             ecrire("5");
         }
-
+        /// <summary>
+        /// Exécute l'opération sélectionnée entre deux valeurs.
+        /// (Addition, soustraction, multiplication, division).
+        /// </summary>
         private void btn_egal_Click_1(object sender, EventArgs e)
         {
             if (op == '+')
@@ -217,7 +242,9 @@ namespace projet_calculatrice
         {
             operation('-');
         }
-
+        /// <summary>
+        /// Change le signe de la valeur affichée (positif ↔ négatif).
+        /// </summary>
         private void btnPlusMoins_Click_1(object sender, EventArgs e)
         {
             memo = (double.Parse(txtEcran.Text)) * (-1);
@@ -241,22 +268,31 @@ namespace projet_calculatrice
         {
             ecrire("0");
         }
-
+        /// <summary>
+        /// Ajoute la valeur affichée à la mémoire (M+).
+        /// </summary>
         private void mplus_Click(object sender, EventArgs e)
         {
             memoire += double.Parse(txtEcran.Text);
         }
 
+        /// <summary>
+        /// Soustrait la valeur affichée de la mémoire (M-).
+        /// </summary>
         private void mMoins_Click(object sender, EventArgs e)
         {
             memoire -= double.Parse(txtEcran.Text);
         }
-
+        /// <summary>
+        /// Stocke la valeur affichée dans la mémoire (MS).
+        /// </summary>
         private void btnMs_Click(object sender, EventArgs e)
         {
              memoire = double.Parse(txtEcran.Text);
         }
-
+        /// <summary>
+        /// Efface la mémoire (MC).
+        /// </summary>
         private void btnMC_Click(object sender, EventArgs e)
         {
             memoire += double.Parse(txtEcran.Text);
